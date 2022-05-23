@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RatingController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+const RATING_ROUTE = '/rating';
+
+Route::post(RATING_ROUTE, [RatingController::class, 'like']);
+Route::get(RATING_ROUTE, [RatingController::class, 'getRating']);
